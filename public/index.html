@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="hy">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ծնողական վերահսկում</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="login" id="loginPanel">
+        <div>
+          <p class="eyebrow">Remote help</p>
+          <h1>Ծնողական վերահսկում</h1>
+          <p>Մուտքագրիր դիտման գաղտնաբառը՝ համակարգիչները կառավարելու համար։</p>
+        </div>
+        <form id="loginForm">
+          <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Գաղտնաբառ" />
+          <button type="submit">Մուտք</button>
+        </form>
+      </section>
+
+      <section class="dashboard hidden" id="dashboard">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Live panel</p>
+            <h1>Ուղիղ դիտում</h1>
+          </div>
+          <span class="status" id="statusBadge">Անջատված է</span>
+        </header>
+
+        <div class="layout">
+          <aside class="sidebar">
+            <div class="panel-title">Համակարգիչներ</div>
+            <div class="device-list" id="deviceList"></div>
+          </aside>
+
+          <section class="workspace">
+            <div class="selected-row">
+              <strong id="selectedDevice">Սարք չկա</strong>
+              <p class="notice" id="notice">Սպասում եմ կապին...</p>
+            </div>
+
+            <div class="controls">
+              <button data-command="screen_start">🔴 Էկրան</button>
+              <button data-command="screen_stop">⏸ Էկրանը կանգնեցնել</button>
+              <button data-command="webcam_start">📷 Վեբ տեսախցիկ</button>
+              <button data-command="webcam_stop">⏸ Տեսախցիկը կանգնեցնել</button>
+              <button class="danger" data-command="all_stop">■ Դադարեցնել բոլորը</button>
+            </div>
+
+            <div class="grid">
+              <article>
+                <div class="media-title">Էկրան</div>
+                <img id="screenImage" alt="Էկրան" />
+              </article>
+              <article>
+                <div class="media-title">Վեբ տեսախցիկ</div>
+                <img id="webcamImage" alt="Վեբ տեսախցիկ" />
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
