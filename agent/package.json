@@ -1,0 +1,24 @@
+{
+  "name": "powerrat-agent",
+  "version": "1.0.0",
+  "description": "Powerrat Agent with Consent Dialog",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "ws": "^8.16.0",
+    "screenshot-desktop": "^1.12.0",
+    "node-webcam": "^0.8.0",
+    "node-record-lpcm16": "^1.0.1"
+  },
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+
