@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Powerrat Agent - Համաձայնություն</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .message p {
+      margin-bottom: 12px;
+    }
+
+    .features {
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .features h3 {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .features ul {
+      list-style: none;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .features li {
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .features li:before {
+      content: "✓";
+      color: #667eea;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-decline {
+      background: #e0e0e0;
+      color: #333;
+    }
+
+    .btn-decline:hover {
+      background: #d0d0d0;
+    }
+
+    .btn-accept {
+      background: #667eea;
+      color: white;
+    }
+
+    .btn-accept:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .warning {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #856404;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">👨‍👩‍👧‍👦</div>
+    <h1>Powerrat Agent</h1>
+    
+    <div class="warning">
+      ⚠️ Այս սարքը կմոնիտորվի ծնողների կողմից
+    </div>
+
+    <div class="message">
+      <p><strong>Ձեր ծնողները ցանկանում են հետևել այս համակարգչին:</strong></p>
+      <p>Եթե դուք համաձայն եք, կամ ծնողներ եք, ապա սեղմեք "Համաձայն եմ":</p>
+    </div>
+
+    <div class="features">
+      <h3>Մոնիտորվելու են հետևյալները:</h3>
+      <ul>
+        <li>Էկրանի պատճենահանումներ</li>
+        <li>Վեբ տեսախցիկ</li>
+        <li>Ձայնագրություն</li>
+      </ul>
+    </div>
+
+    <div class="features">
+      <h3>Դուք կարող եք:</h3>
+      <ul>
+        <li>Ցանկացած պահի դադարեցնել մոնիտորինգը</li>
+        <li>Տեսնել ստատուսը տրեյում</li>
+        <li>Վերահսկել ամբողջ գործընթացը</li>
+      </ul>
+    </div>
+
+    <div class="buttons">
+      <button class="btn-decline" onclick="decline()">Մերժել</button>
+      <button class="btn-accept" onclick="accept()">Համաձայն եմ</button>
+    </div>
+  </div>
+
+  <script>
+    async function accept() {
+      const result = await window.electronAPI.consentDialog({ consented: true });
+      if (result.ok) {
+        console.log('Consent accepted');
+      }
+    }
+
+    function decline() {
+      window.electronAPI.consentDialog({ consented: false });
+    }
+  </script>
+</body>
+</html>
+
